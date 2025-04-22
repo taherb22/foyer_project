@@ -24,6 +24,8 @@ public class Etudiant implements Serializable {
 
     private Date dateNaissance;
 
+    @ManyToMany
+
     // Getters and Setters
 
     public Long getIdEtudiant() {

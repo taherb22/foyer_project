@@ -2,12 +2,17 @@ package org.example.foyerproj.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
 @Entity
 @Table(name = "University")
 public class University implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +21,9 @@ public class University implements Serializable {
     private String nomUniversity;
 
     private String adresse;
+
+    @OneToOne
+    private Foyer foyer ;
 
     // Getters and Setters
 
@@ -41,5 +49,13 @@ public class University implements Serializable {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public Foyer getFoyer() {
+        return foyer;
+    }
+
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
     }
 }

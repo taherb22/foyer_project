@@ -3,6 +3,8 @@ package org.example.foyerproj.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name ="Foyer")
@@ -14,6 +16,13 @@ public class Foyer  implements Serializable  {
     private Long idClient ;
     private String nomFoyer ;
     private Long capaciteFoyer ;
+    @OneToOne(mappedBy = "foyer")
+    private University university ;
+
+    @OneToMany(mappedBy = "foyer")
+    private Set<Bloc> blocSet = new HashSet<>();
+
+
     // Getters
     public Long getIdClient() {
         return idClient;
@@ -41,4 +50,11 @@ public class Foyer  implements Serializable  {
     }
 
 
+    public Set<Bloc> getBlocSet() {
+        return blocSet;
+    }
+
+    public void setBlocSet(Set<Bloc> blocSet) {
+        this.blocSet = blocSet;
+    }
 }
