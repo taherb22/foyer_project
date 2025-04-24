@@ -3,8 +3,9 @@ package org.example.foyerproj.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Etudiant")
@@ -24,8 +25,18 @@ public class Etudiant implements Serializable {
 
     private Date dateNaissance;
 
-    @ManyToMany
 
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL )
+    private Set<Tache> taches = new HashSet<>() ;
+
+
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private Set<Reservation> Reservations = new HashSet<>() ;
+
+    public Set<Reservation> getReservations() {
+        return Reservations;
+    }
     // Getters and Setters
 
     public Long getIdEtudiant() {

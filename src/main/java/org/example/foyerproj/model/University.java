@@ -22,7 +22,7 @@ public class University implements Serializable {
 
     private String adresse;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Foyer foyer ;
 
     // Getters and Setters

@@ -14,18 +14,18 @@ public class Tache  implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTache;
-
     private LocalDate dateTache;
-
     private Integer duree; // duration in hours or minutes
-
     private Double tarifHoraire;
-
     @Enumerated(EnumType.STRING)
     private TypeTache typeTache;
 
-    // Getters and Setters
 
+
+
+    @ManyToOne( cascade = CascadeType.ALL)
+    private Etudiant etudiant ;
+    // Getters and Setters
     public Long getIdTache() {
         return idTache;
     }
@@ -64,5 +64,13 @@ public class Tache  implements Serializable  {
 
     public void setTypeTache(TypeTache typeTache) {
         this.typeTache = typeTache;
+    }
+
+    public Etudiant getEtudiant() {
+        return etudiant;
+    }
+
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
 }

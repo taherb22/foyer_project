@@ -19,11 +19,13 @@ public class Reservation  implements Serializable  {
     private Boolean estValide;
 
 
-    @ManyToOne
-    private Reservation reservation ;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Chambre  chambre ;
 
 
-    @ManyToMany(mappedBy = "reservation")
+
+
+    @ManyToMany(mappedBy = "Reservations", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Set<Etudiant> etudiantset = new HashSet<>() ;
 
 
@@ -53,13 +55,7 @@ public class Reservation  implements Serializable  {
         this.estValide = estValide;
     }
 
-    public Reservation getReservation() {
-        return reservation;
-    }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
 
     public Set<Etudiant> getEtudiantset() {
         return etudiantset;
@@ -67,5 +63,13 @@ public class Reservation  implements Serializable  {
 
     public void setEtudiantset(Set<Etudiant> etudiantset) {
         this.etudiantset = etudiantset;
+    }
+
+    public Chambre getChambre() {
+        return chambre;
+    }
+
+    public void setChambre(Chambre chambre) {
+        this.chambre = chambre;
     }
 }

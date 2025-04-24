@@ -20,10 +20,10 @@ public class Bloc implements Serializable {
 
     private Long capacityBloc;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Foyer foyer ;
 
-    @OneToMany(mappedBy = "bloc")
+    @OneToMany(mappedBy = "bloc", cascade = CascadeType.ALL)
     private Set<Chambre> chambreSet = new HashSet<>();
 
 

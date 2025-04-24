@@ -17,10 +17,10 @@ public class Chambre implements Serializable {
     private Long numeroChambre ;
     @Enumerated(EnumType.STRING)
     private TypeFoyer typeFoyer;
-   @ManyToOne
-   private Bloc bloc  ;
-   @OneToMany(mappedBy = "bloc")
-   private Set<Reservation> ReservationSet = new HashSet<>();
+    @ManyToOne( cascade = CascadeType.ALL)
+     private Bloc bloc  ;
+    @OneToMany(mappedBy = "bloc", cascade = CascadeType.ALL)
+    private Set<Reservation> ReservationSet = new HashSet<>();
 
 
     public TypeFoyer getTypeFoyer() {

@@ -16,10 +16,13 @@ public class Foyer  implements Serializable  {
     private Long idClient ;
     private String nomFoyer ;
     private Long capaciteFoyer ;
-    @OneToOne(mappedBy = "foyer")
+
+
+    @OneToOne(mappedBy = "foyer", cascade = CascadeType.ALL )
     private University university ;
 
-    @OneToMany(mappedBy = "foyer")
+
+    @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL  )
     private Set<Bloc> blocSet = new HashSet<>();
 
 
